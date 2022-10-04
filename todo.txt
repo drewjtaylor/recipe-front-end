@@ -1,0 +1,1 @@
+Before production, reset api key for spoonacular, and set up the back end to handle the key instead. React does not actually hide the key
