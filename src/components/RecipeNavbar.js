@@ -5,7 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const RecipeNavbar = () => {
   return (
-    <Navbar bg="primary" variant="dark" expand="lg">
+    <Navbar bg="primary" variant="dark" expand="lg" sticky='top'>
       <Container>
         <Navbar.Brand href="#home">Recipe Finder</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
