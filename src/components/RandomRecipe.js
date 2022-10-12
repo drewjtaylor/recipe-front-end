@@ -10,14 +10,14 @@ const RandomRecipe = () => {
 
   return (
     <>
-    <button onClick={() => {
+        <button onClick={() => {
             fetch(URL)
             .then(res => res.json())
             .then(data => setReturnedInfo(data))
         }}>Click here to get a random recipe</button>
-            <h3>{returnedInfo.recipes ? returnedInfo.recipes[0].title : null}</h3>
-            <p>Description: {returnedInfo.recipes ? returnedInfo['recipes'][0].summary : null}</p>
-        
+        <h3>{returnedInfo.recipes ? returnedInfo.recipes[0].title : null}</h3>
+        <p>Description: {returnedInfo.recipes ? returnedInfo['recipes'][0].summary : null}</p>
+    
         {/* <div>
             Full returned info: {JSON.stringify(returnedInfo, null, 2)}
         </div> */}

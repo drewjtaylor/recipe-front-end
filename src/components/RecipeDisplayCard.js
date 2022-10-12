@@ -7,12 +7,12 @@ import { Markup } from "interweave";
 // Accepts a single recipe object and displays information on a card
 
 const RecipeDisplayCard = ({ recipeObject }) => {
-    if (recipeObject === {}) {return null} else
-  
-  
-    if (recipeObject) {
+    if (recipeObject === {}) {return null} else {
+
     const recipe = recipeObject.recipes[0];
+
     
+
     return ( <>
         <Row className="justify-content-center">
             <Col xs={8}>
