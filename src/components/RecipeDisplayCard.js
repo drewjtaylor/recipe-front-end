@@ -11,21 +11,19 @@ const RecipeDisplayCard = ({ recipeObject }) => {
 
     const recipe = recipeObject.recipes[0];
 
-    
-
     return ( <>
         <Row className="justify-content-center">
             <Col xs={8}>
-                <Card>
+                <Card className="my-2 shadow rounded">
                     <Card.Img
                     variant="top"
-                    src={"https://spoonacular.com/recipeImages/655525-556x370.jpg"}
+                    src={recipe.image}
                     />
                     <Card.Body>
                     <Card.Title>{recipe.title}</Card.Title>
                     <Card.Text><Markup content={recipe.summary} /></Card.Text>
                     <Button as="a" href={recipe.sourceUrl} variant="primary">
-                        Go Somewhere
+                        Visit the creator of this recipe here
                     </Button>
                     </Card.Body>
                 </Card>
