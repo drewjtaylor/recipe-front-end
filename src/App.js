@@ -14,10 +14,11 @@ function App() {
 
     return ( <Container>
         <RecipeNavbar />
-        <HomePage />
+        {/* <HomePage />
         <RecipeDisplayCard recipeObject={example}/>
-        <RandomRecipe />
+        <RandomRecipe /> */}
         <SearchByIngredientForm />
+
     </Container>
   );
 }
