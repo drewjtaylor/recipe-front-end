@@ -61,13 +61,16 @@ const SearchByIngredientForm = () => {
 
       <Button onClick={testAPIFunction}>Try the test, check the console</Button>
 
-      {recipesByIngredient.map((recipe) => {
-        return (
-          <Col sm={6} key={recipe.title}>
-            <RecipeDisplayCard recipeObject={{ recipes: [recipe] }} />
-          </Col>
-        );
-      })}
+      <Row>
+          {recipesByIngredient.map((recipe) => {
+            return (
+              <Col sm={6} key={recipe.title}>
+                <RecipeDisplayCard recipeObject={{ recipes: [recipe] }} />
+              </Col>
+            );
+          })}
+      </Row>
+
       <Button onClick={() => setRecipesByIngredient([])}>Click to reset</Button>
     </>
   );
