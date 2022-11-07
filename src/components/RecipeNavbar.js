@@ -42,7 +42,7 @@ const RecipeNavbar = () => {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant='primary' type="submit">Log in </Button>
-                <Button as='a' onClick={toggleModal} variant='primary'><Link to='register' className='no-link-decoration'>Register</Link></Button>
+                <Button onClick={toggleModal} variant='primary'><Link to='register' className='no-link-decoration'>Register</Link></Button>
             </Modal.Footer>
         </Form>
       </Modal>
@@ -52,10 +52,10 @@ const RecipeNavbar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link><NavLink className='no-link-decoration' to="/">Home</NavLink></Nav.Link>
+            <Nav.Link as='li'><NavLink className='no-link-decoration' to="/">Home</NavLink></Nav.Link>
             <Nav.Link onClick={toggleModal}>Sign in</Nav.Link>
-            <Nav.Link ><NavLink className='no-link-decoration' to="register">Register</NavLink></Nav.Link>
-            <Nav.Link ><NavLink className='no-link-decoration' to="recipeSearch">Find a Recipe</NavLink></Nav.Link>
+            <Nav.Link as='li'><NavLink className='no-link-decoration' to="register">Register</NavLink></Nav.Link>
+            <Nav.Link as='li'><NavLink className='no-link-decoration' to="recipeSearch">Find a Recipe</NavLink></Nav.Link>
             
           </Nav>
         </Navbar.Collapse>
