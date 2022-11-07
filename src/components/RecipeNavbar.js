@@ -5,9 +5,9 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
-import { NavLink } from 'react-router-dom';
+
+import { NavLink, Link } from 'react-router-dom';
 
 const RecipeNavbar = () => {
     const emailRef = useRef();
@@ -24,7 +24,7 @@ const RecipeNavbar = () => {
     }
 
   return (
-    <Navbar bg="primary" variant="dark" expand="lg" sticky='top'>
+    <Navbar bg="danger" variant="dark" expand="lg" sticky='top'>
       <Modal show={show} onHide={toggleModal}>
         <Form onSubmit={handleSubmit}>
             <Modal.Header closeButton>
@@ -42,32 +42,21 @@ const RecipeNavbar = () => {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant='primary' type="submit">Log in </Button>
-                <Button variant='primary' onClick={toggleModal}>Close (evetually should be "sign up") </Button>
+                <Button as='a' onClick={toggleModal} variant='primary'><Link to='register' className='no-link-decoration'>Register</Link></Button>
             </Modal.Footer>
         </Form>
       </Modal>
-      
-      
       
       <Container>
         <Navbar.Brand href="#home">Recipe Finder</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link><NavLink className='no-link-decoration' to="/">Home</NavLink></Nav.Link>
             <Nav.Link onClick={toggleModal}>Sign in</Nav.Link>
-            <Nav.Link ><NavLink to="register">Register</NavLink></Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link ><NavLink className='no-link-decoration' to="register">Register</NavLink></Nav.Link>
+            <Nav.Link ><NavLink className='no-link-decoration' to="recipeSearch">Find a Recipe</NavLink></Nav.Link>
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

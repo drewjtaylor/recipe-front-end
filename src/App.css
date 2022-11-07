@@ -3,3 +3,13 @@
     line-height: 85%;
     font-size: 330%;
 }
+
+.no-link-decoration {
+    text-decoration: none;
+    color: inherit
+}
+
+.no-link-decoration:hover {
+    text-decoration: none;;
+    color: inherit
+}
