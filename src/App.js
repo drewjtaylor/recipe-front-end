@@ -3,21 +3,31 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchByIngredientForm from './components/SearchByIngredientForm';
 
 import RecipeNavbar from './components/RecipeNavbar';
-import RandomRecipe from './components/RandomRecipe';
-import RecipeDisplayCard from './components/RecipeDisplayCard';
-import HomePage from './pages/HomePage';
+// import RandomRecipe from './components/RandomRecipe';
+// import RecipeDisplayCard from './components/RecipeDisplayCard';
+// import HomePage from './pages/HomePage';
+
+import {Routes, Route} from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
-import example from './example';
+import HomePage from './pages/HomePage';
+import Register from './pages/Register';
+// import example from './example';
 
 function App() {
 
     return ( <Container>
         <RecipeNavbar />
+        <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='register' element={<Register />} />
+            <Route path='searchByIngredient' element={<SearchByIngredientForm />} />
+        </Routes>
+
+
         {/* <HomePage />
         <RecipeDisplayCard recipeObject={example}/>
         <RandomRecipe /> */}
-        <SearchByIngredientForm />
 
     </Container>
   );

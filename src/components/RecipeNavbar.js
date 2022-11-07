@@ -7,6 +7,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+import { NavLink } from 'react-router-dom';
+
 const RecipeNavbar = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -23,7 +25,6 @@ const RecipeNavbar = () => {
 
   return (
     <Navbar bg="primary" variant="dark" expand="lg" sticky='top'>
-      
       <Modal show={show} onHide={toggleModal}>
         <Form onSubmit={handleSubmit}>
             <Modal.Header closeButton>
@@ -55,6 +56,7 @@ const RecipeNavbar = () => {
           <Nav className="me-auto">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link onClick={toggleModal}>Sign in</Nav.Link>
+            <Nav.Link ><NavLink to="register">Register</NavLink></Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
