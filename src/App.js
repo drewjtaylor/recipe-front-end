@@ -1,6 +1,5 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SearchByIngredientForm from './components/SearchByIngredientForm';
 
 import RecipeNavbar from './components/RecipeNavbar';
 // import RandomRecipe from './components/RandomRecipe';
@@ -22,7 +21,6 @@ function App() {
         <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='register' element={<Register />} />
-            <Route path='searchByIngredient' element={<SearchByIngredientForm />} />
             <Route path='recipeSearch' element={<RecipeSearch />} />
         </Routes>
 
