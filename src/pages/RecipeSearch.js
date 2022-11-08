@@ -1,9 +1,11 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import RecipeDisplayCard from '../components/RecipeDisplayCard';
+import baseUrl from '../util';
 
 
 const RecipeSearch = () => {
@@ -13,17 +15,19 @@ const RecipeSearch = () => {
     const typeOfDiet = useRef();
     const intolerances = useRef();
 
+    const [recipeResults, setRecipeResults] = useState([])
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const objectOfFormValues = {
-        ingredient: ingredient.current.value,
-        bannedIngredients: bannedIngredients.current.value,
-        numberOfResults: numberOfResults.current.value,
-        typeOfDiet: typeOfDiet.current.value
-    }
-    console.log(objectOfFormValues);
+    fetch(`${baseUrl}/searchByIngredient?ingredients=${ingredient.current.value}&number=${numberOfResults.current.value}`)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        setRecipeResults(data)
+    })
+    .catch(err => console.log(`An error occurred: ${err}`))
+    ;
   }
   
   
@@ -74,6 +78,10 @@ const RecipeSearch = () => {
 
             <Button type='submit'>Submit</Button>
         </Form>
+
+        {recipeResults.map(recipe => (
+            <RecipeDisplayCard recipesList={recipe} />
+        ))}
     </Container>
   )
 }
