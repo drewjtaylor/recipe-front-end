@@ -1,26 +1,31 @@
 import { useState } from 'react';
-import example from '../example';
+import RecipeDisplayCard from './RecipeDisplayCard';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
-const URL = `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}`;
+const randomRecipeUrl = 'https://localhost:3443/recipes/random';
 
 
 const RandomRecipe = () => {
-    const [returnedInfo, setReturnedInfo] = useState(example)
+    const [returnedInfo, setReturnedInfo] = useState({})
 
   return (
     <>
         <button onClick={() => {
-            fetch(URL)
+            fetch(randomRecipeUrl)
             .then(res => res.json())
-            .then(data => setReturnedInfo(data))
+            .then(data => {
+                console.log(data);
+                setReturnedInfo(data)})
+            .catch(err => console.log(err))
         }}>Click here to get a random recipe</button>
-        <h3>{returnedInfo.recipes ? returnedInfo.recipes[0].title : null}</h3>
+        <p>returnedInfo.recipes is {(!!returnedInfo)}</p>
+        <h3>Title: {returnedInfo.recipes ? returnedInfo.recipes[0].title : null}</h3>
         <p>Description: {returnedInfo.recipes ? returnedInfo['recipes'][0].summary : null}</p>
     
-        {/* <div>
+        <RecipeDisplayCard recipesList={returnedInfo?.recipes}/>
+
+        <div>
             Full returned info: {JSON.stringify(returnedInfo, null, 2)}
-        </div> */}
+        </div>
 
         <div>Steps: {returnedInfo.recipes ?
             returnedInfo.recipes[0].analyzedInstructions[0].steps.map(step => {

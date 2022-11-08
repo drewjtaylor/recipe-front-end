@@ -6,12 +6,11 @@ import { Markup } from "interweave";
 
 // Accepts a single recipe object and displays information on a card
 
-const RecipeDisplayCard = ({ recipeObject }) => {
-    if (recipeObject === {}) {return null} else {
+const RecipeDisplayCard = ({ recipesList }) => {
 
-    const recipe = recipeObject.recipes[0];
+    const recipe = recipesList?.recipes[0];
 
-    return ( <>
+    if (recipesList) return ( <>
         <Row className="justify-content-center">
             <Col xs={8}>
                 <Card className="my-2 shadow rounded">
@@ -29,9 +28,8 @@ const RecipeDisplayCard = ({ recipeObject }) => {
                 </Card>
             </Col>
         </Row>
-    </>
-    );
-  }
+    </>);
+  
 };
 
 export default RecipeDisplayCard;
