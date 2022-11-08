@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import RecipeDisplayCard from './RecipeDisplayCard';
 import example from '../example';
+import baseUrl from '../util';
 
-const randomRecipeUrl = 'https://localhost:3443/recipes/random';
+const randomRecipeUrl = `${baseUrl}/recipes/random`;
 
 
 const RandomRecipe = () => {
