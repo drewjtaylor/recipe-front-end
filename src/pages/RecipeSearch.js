@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
@@ -11,12 +11,19 @@ const RecipeSearch = () => {
     const bannedIngredients = useRef();
     const numberOfResults = useRef();
     const typeOfDiet = useRef();
-    const typeOfIntolerances = useRef();
+    const intolerances = useRef();
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(ingredient.current);
-    console.log(bannedIngredients.current);
+    const objectOfFormValues = {
+        ingredient: ingredient.current.value,
+        bannedIngredients: bannedIngredients.current.value,
+        numberOfResults: numberOfResults.current.value,
+        typeOfDiet: typeOfDiet.current.value
+    }
+    console.log(objectOfFormValues);
   }
   
   
@@ -33,12 +40,12 @@ const RecipeSearch = () => {
             </Form.Group>
             <Form.Group className='mb-2 col-6'>
                 <Form.Label>Number of results</Form.Label>
-                <Form.Control ref={numberOfResults} type='text' placeholder='Leave blank for 4 recipes'/>
+                <Form.Control ref={numberOfResults} type='number' min='1' max='10' defaultValue='3'/>
             </Form.Group>
             <Form.Group className='mb-2 col-6'>
                 <Form.Label>Type of Diet (optional)</Form.Label>
                 <Form.Select ref={typeOfDiet} area-label="Choose a type of diet">
-                    <option>Select intolerances</option>
+                    <option>Select diet</option>
                     <option value='Gluten Free'>Gluten Free</option>
                     <option value='Ketogenic'>Ketogenic</option>
                     <option value='Vegetarian'>Vegetarian</option>
