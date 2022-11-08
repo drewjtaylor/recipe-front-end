@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import RecipeDisplayCard from './RecipeDisplayCard';
+import example from '../example';
 
 const randomRecipeUrl = 'https://localhost:3443/recipes/random';
 
 
 const RandomRecipe = () => {
-    const [returnedInfo, setReturnedInfo] = useState({})
-
-  return (
-    <>
+    const [returnedInfo, setReturnedInfo] = useState(example)
+    console.log(JSON.stringify(returnedInfo, null, 2));
+    return (
+        <>
         <button onClick={() => {
             fetch(randomRecipeUrl)
             .then(res => res.json())
@@ -17,15 +18,8 @@ const RandomRecipe = () => {
                 setReturnedInfo(data)})
             .catch(err => console.log(err))
         }}>Click here to get a random recipe</button>
-        <p>returnedInfo.recipes is {(!!returnedInfo)}</p>
-        <h3>Title: {returnedInfo.recipes ? returnedInfo.recipes[0].title : null}</h3>
-        <p>Description: {returnedInfo.recipes ? returnedInfo['recipes'][0].summary : null}</p>
-    
-        <RecipeDisplayCard recipesList={returnedInfo?.recipes}/>
 
-        <div>
-            Full returned info: {JSON.stringify(returnedInfo, null, 2)}
-        </div>
+        <RecipeDisplayCard recipesList={returnedInfo}/>
 
         <div>Steps: {returnedInfo.recipes ?
             returnedInfo.recipes[0].analyzedInstructions[0].steps.map(step => {

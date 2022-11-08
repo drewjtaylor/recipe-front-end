@@ -17,6 +17,7 @@ const RecipeDisplayCard = ({ recipesList }) => {
                     <Card.Img
                     variant="top"
                     src={recipe.image}
+                    alt={recipe.title}
                     />
                     <Card.Body>
                     <Card.Title>{recipe.title}</Card.Title>
