@@ -2,3 +2,14 @@ Before production, reset api key for spoonacular, and set up the back end to han
 
 
 test "tree nut" intolerance on recipe search. https://spoonacular.com/food-api/docs#Intolerances lists it with a space. Not sure if it should be treenut or tree_nut
+
+
+
+add validation to RecipeSearch
+
+add validation to Register
+
+
+
+Move login modal from recipe-navbar to it's own component
+add validation to Login Modal (in recipe navbar)
