@@ -1,1 +1,4 @@
 Before production, reset api key for spoonacular, and set up the back end to handle the key instead. React does not actually hide the key
+
+
+test "tree nut" intolerance on recipe search. https://spoonacular.com/food-api/docs#Intolerances lists it with a space. Not sure if it should be treenut or tree_nut
