@@ -24,10 +24,8 @@ const RandomRecipe = () => {
 
         <div>Steps: {returnedInfo.recipes ?
             returnedInfo.recipes[0].analyzedInstructions[0].steps.map(step => {
-                return <>
-        <p>{step.number}: {step.step}</p>
-    </>
-})
+                return <p key={step.number}>{step.number}: {step.step}</p>
+    })
             : null}
         </div>
     </>
