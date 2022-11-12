@@ -3,16 +3,14 @@ import RecipeDisplayCard from './RecipeDisplayCard';
 import example from '../example';
 import baseUrl from '../util';
 
-const randomRecipeUrl = `${baseUrl}/recipes/random`;
-
 
 const RandomRecipe = () => {
     const [returnedInfo, setReturnedInfo] = useState(example)
-    console.log(JSON.stringify(returnedInfo, null, 2));
+
     return (
         <>
         <button onClick={() => {
-            fetch(randomRecipeUrl)
+            fetch(`${baseUrl}/recipes/random`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -25,7 +23,7 @@ const RandomRecipe = () => {
         <div>Steps: {returnedInfo.recipes ?
             returnedInfo.recipes[0].analyzedInstructions[0].steps.map(step => {
                 return <p key={step.number}>{step.number}: {step.step}</p>
-    })
+                })
             : null}
         </div>
     </>
