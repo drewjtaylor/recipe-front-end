@@ -20,7 +20,7 @@ const RecipeSearch = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`${baseUrl}/searchByIngredient?ingredients=${ingredient.current.value}&number=${numberOfResults.current.value}`)
+    fetch(`${baseUrl}/recipes/searchByIngredient?ingredients=${ingredient.current.value}&number=${numberOfResults.current.value}`)
     .then(res => res.json())
     .then(data => {
         console.log(data);
