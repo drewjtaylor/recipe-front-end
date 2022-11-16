@@ -80,7 +80,7 @@ const RecipeSearch = () => {
         </Form>
 
         {recipeResults.map(recipe => (
-            <RecipeDisplayCard recipesList={recipe} />
+            <RecipeDisplayCard key={recipe.id} recipe={recipe} />
         ))}
     </Container>
   )
