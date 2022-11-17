@@ -4,17 +4,26 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+import baseUrl from '../util';
+
 
 
 const Register = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
+    const usernameRef = useRef();
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(emailRef.current.value);
-        console.log(passwordRef.current.value);
+        axios.post(`${baseUrl}/users`, {
+            username: usernameRef.current.value,
+            email: emailRef.current.value,
+            password: passwordRef.current.value
+        })
+        .then(response => console.log(response.data.status))
+        .catch(err => console.log(err.response.data.message))
     }
 
   return (
@@ -24,6 +33,10 @@ const Register = () => {
             <Form.Group controlId="email">
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control ref={emailRef} className="mb-3" type="email" placeholder="Enter email here"/>
+            </Form.Group>
+            <Form.Group controlId="username">
+                <Form.Label>Username</Form.Label>
+                <Form.Control ref={usernameRef} className="mb-3" type="username" placeholder="Pick a username"/>
             </Form.Group>
             <Form.Group controlId="password">
                 <Form.Label>Password</Form.Label>
