@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -15,9 +17,10 @@ import RecipeSearch from './pages/RecipeSearch';
 // import example from './example';
 
 function App() {
+    const [user, setUser] = useState({email: null});
 
     return ( <Container>
-        <RecipeNavbar />
+        <RecipeNavbar user={user} setUser={setUser}/>
         <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='register' element={<Register />} />

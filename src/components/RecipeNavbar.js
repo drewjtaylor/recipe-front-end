@@ -9,7 +9,9 @@ import Navbar from 'react-bootstrap/Navbar';
 
 import { NavLink, Link } from 'react-router-dom';
 
-const RecipeNavbar = () => {
+const RecipeNavbar = (props) => {
+    const {user, setUser} = props;
+
     const emailRef = useRef();
     const passwordRef = useRef();
 
@@ -21,6 +23,8 @@ const RecipeNavbar = () => {
         e.preventDefault();
         console.log(emailRef.current.value);
         console.log(passwordRef.current.value);
+        setUser({email: emailRef.current.value})
+        console.log(`the user is ${JSON.stringify(user, null, 2)}`)
     }
 
   return (
