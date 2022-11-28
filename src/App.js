@@ -17,7 +17,7 @@ import RecipeSearch from './pages/RecipeSearch';
 // import example from './example';
 
 function App() {
-    const [user, setUser] = useState({email: null});
+    const [user, setUser] = useState({email: null, firstName: 'Andrew'});
 
     return ( <Container>
         <RecipeNavbar user={user} setUser={setUser}/>

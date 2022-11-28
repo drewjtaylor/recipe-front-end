@@ -13,6 +13,8 @@ const Register = () => {
     const emailRef = useRef();
     const passwordRef = useRef();
     const usernameRef = useRef();
+    const firstNameRef = useRef();
+    const lastNameRef = useRef();
 
 
     const handleSubmit = (e) => {
@@ -20,6 +22,8 @@ const Register = () => {
         axios.post(`${baseUrl}/users`, {
             username: usernameRef.current.value,
             email: emailRef.current.value,
+            firstName: firstNameRef.current.value,
+            lastName: lastNameRef.current.value,
             password: passwordRef.current.value
         })
         .then(response => console.log(response.data.status))
@@ -37,6 +41,14 @@ const Register = () => {
             <Form.Group controlId="username">
                 <Form.Label>Username</Form.Label>
                 <Form.Control ref={usernameRef} className="mb-3" type="username" placeholder="Pick a username"/>
+            </Form.Group>
+            <Form.Group controlId="firstName">
+                <Form.Label>First Name</Form.Label>
+                <Form.Control ref={firstNameRef} className="mb-3" type="name" placeholder="Enter your first name"/>
+            </Form.Group>
+            <Form.Group controlId="lastName">
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control ref={lastNameRef} className="mb-3" type="name" placeholder="Enter your last name (optional)"/>
             </Form.Group>
             <Form.Group controlId="password">
                 <Form.Label>Password</Form.Label>

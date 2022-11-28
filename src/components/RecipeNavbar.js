@@ -19,12 +19,19 @@ const RecipeNavbar = (props) => {
 
     const toggleModal = () => setShow(prev => !prev)
 
+    const handleLogin = () => {
+        setUser({firstName: 'test'});
+        toggleModal();
+        console.log(`The current user object is: ${user}`)
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(emailRef.current.value);
         console.log(passwordRef.current.value);
         setUser({email: emailRef.current.value})
-        console.log(`the user is ${JSON.stringify(user, null, 2)}`)
+        console.log(`the user is`);
+        console.log(user)
     }
 
   return (
@@ -45,22 +52,21 @@ const RecipeNavbar = (props) => {
                     </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant='primary' type="submit">Log in </Button>
+                <Button onClick={handleLogin} variant='primary' type="submit">Log in </Button>
                 <Button onClick={toggleModal} variant='primary'><Link to='register' className='no-link-decoration'>Register</Link></Button>
             </Modal.Footer>
         </Form>
       </Modal>
       
       <Container>
-        <Navbar.Brand href="#home">Recipe Finder</Navbar.Brand>
+        <Navbar.Brand >Welcome {user.firstName}</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
+          <Nav className="ms-auto">
             <Nav.Link as='li'><NavLink className='no-link-decoration' to="/">Home</NavLink></Nav.Link>
             <Nav.Link onClick={toggleModal}>Sign in</Nav.Link>
             <Nav.Link as='li'><NavLink className='no-link-decoration' to="register">Register</NavLink></Nav.Link>
             <Nav.Link as='li'><NavLink className='no-link-decoration' to="recipeSearch">Find a Recipe</NavLink></Nav.Link>
-            
           </Nav>
         </Navbar.Collapse>
       </Container>
