@@ -13,3 +13,9 @@ add validation to Register
 
 Move login modal from recipe-navbar to it's own component
 add validation to Login Modal (in recipe navbar)
+
+
+
+
+Website to help get through authentication (may need bigger screen)
+https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications

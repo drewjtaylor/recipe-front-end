@@ -19,12 +19,6 @@ const RecipeNavbar = (props) => {
 
     const toggleModal = () => setShow(prev => !prev)
 
-    const handleLogin = () => {
-        setUser({firstName: 'test'});
-        toggleModal();
-        console.log(`The current user object is: ${user}`)
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(emailRef.current.value);
@@ -32,6 +26,10 @@ const RecipeNavbar = (props) => {
         setUser({email: emailRef.current.value})
         console.log(`the user is`);
         console.log(user)
+    }
+
+    const handleLogin = async e => {
+        e.preventDefault();
     }
 
   return (
