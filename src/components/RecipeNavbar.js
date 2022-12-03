@@ -8,12 +8,14 @@ import Navbar from 'react-bootstrap/Navbar';
 
 
 import { NavLink, Link } from 'react-router-dom';
+import baseUrl from '../util';
 
 const RecipeNavbar = (props) => {
     const {user, setUser} = props;
 
     const emailRef = useRef();
     const passwordRef = useRef();
+    const usernameRef = useRef();
 
     const [show, setShow] = useState(false);
 
@@ -21,28 +23,40 @@ const RecipeNavbar = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(emailRef.current.value);
-        console.log(passwordRef.current.value);
-        setUser({email: emailRef.current.value})
-        console.log(`the user is`);
-        console.log(user)
+        toggleModal();
+        fetch(`${baseUrl}/users/login`, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: usernameRef.current.value,
+                password: passwordRef.current.value
+            })
+        })
+        .then(response => response.JSON)
+        .then(data => console.log(data))
+
+        // console.log(emailRef.current.value);
+        // console.log(passwordRef.current.value);
+        // setUser({email: emailRef.current.value})
+        // console.log(`the user is`);
+        // console.log(user)
     }
 
-    const handleLogin = async e => {
-        e.preventDefault();
-    }
 
   return (
     <Navbar bg="danger" variant="dark" expand="lg" sticky='top'>
       <Modal show={show} onHide={toggleModal}>
         <Form onSubmit={handleSubmit}>
             <Modal.Header closeButton>
-                <Modal.Title>Enter your email and password to sign in below</Modal.Title>
+                <Modal.Title>Enter your username and password to sign in below</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                    <Form.Group controlId="email">
-                        <Form.Label>Email Address</Form.Label>
-                        <Form.Control ref={emailRef} className="mb-3" type="email" placeholder="Enter email here"/>
+                    <Form.Group controlId="username">
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control ref={usernameRef} className="mb-3" type="username" placeholder="Enter username here"/>
                     </Form.Group>
                     <Form.Group controlId="password">
                         <Form.Label>Password</Form.Label>
@@ -50,7 +64,7 @@ const RecipeNavbar = (props) => {
                     </Form.Group>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={handleLogin} variant='primary' type="submit">Log in </Button>
+                <Button variant='primary' type="submit">Log in </Button>
                 <Button onClick={toggleModal} variant='primary'><Link to='register' className='no-link-decoration'>Register</Link></Button>
             </Modal.Footer>
         </Form>
