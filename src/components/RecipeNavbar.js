@@ -35,8 +35,20 @@ const RecipeNavbar = (props) => {
                 password: passwordRef.current.value
             })
         })
-        .then(response => response.JSON)
-        .then(data => console.log(data))
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                return data.token
+            } else {
+                console.log('Your log in attempt failed. Please check your username and password and try again.')
+            }
+        })
+        .then(token => {
+            console.log(token);
+            localStorage.setItem('token', token);
+            console.log(`The token item in storage is: ${localStorage.getItem('token')}`)
+        })
+        .catch(err => console.log(err))
 
         // console.log(emailRef.current.value);
         // console.log(passwordRef.current.value);
